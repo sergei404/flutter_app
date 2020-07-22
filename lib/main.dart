@@ -1,4 +1,8 @@
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
@@ -59,7 +63,28 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             SvgPicture.asset("assets/images/flutterio-ar21.svg"),
-            Image.asset('assets/images/photo2.jpg')
+            CarouselSlider(
+              options: CarouselOptions(height: 300.0),
+              items: [1,2,3,4,5].map((i) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.symmetric(horizontal: 8.0),
+                      decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                      ),
+                      child: Text(
+                        'text $i', 
+                        style: TextStyle(fontSize: 26.0), 
+                      ),
+                      
+                    );
+                  },
+                );
+              }).toList(),
+            ),
+
           ],
         ),
       ),
